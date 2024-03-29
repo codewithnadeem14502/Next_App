@@ -1,11 +1,33 @@
 "use client";
 
 import { useState } from "react";
-export default function EditTopicForm() {
-  const [newTitle, setNewTitle] = useState();
-  const [newDescription, setNewDescription] = useState();
+import { useRouter } from "next/navigation";
+export default function EditTopicForm({ id, title, description }) {
+  const [newTitle, setNewTitle] = useState(title);
+  const [newDescription, setNewDescription] = useState(description);
+  const router = useRouter();
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "applicaiton/json",
+        },
+        body: JSON.stringify({ newTitle, newDescription }),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to update");
+      }
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form className="flex flex-col gap-3">
+    <form className="flex flex-col gap-3" onSubmit={handleEdit}>
       <input
         onChange={(e) => setNewTitle(e.target.value)}
         value={newTitle}
