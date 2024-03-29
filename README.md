@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# CURD opertaion 
+
+## Demo Video
+
+
+
+https://github.com/codewithnadeem14502/Next_App/assets/105824474/e9744ed5-f358-4347-90aa-b3edb796e3e2
+
+
+
+
+
 ## Getting Started
 
 First, run the development server:
